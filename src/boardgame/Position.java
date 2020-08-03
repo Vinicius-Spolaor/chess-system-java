@@ -2,40 +2,40 @@ package boardgame;
 
 public class Position {
 	
-	private int row;
-	private int column;
+	private int irow;
+	private int icolumn;
 	
 	//Constructors
 	
 	public Position() {
 	}
 	
-	public Position(int row, int column) {
-		this.row = row;
-		this.column = column;
+	public Position(int irow, int icolumn) {
+		this.irow = irow;
+		this.icolumn = icolumn;
 	}
 	
 	//Getters and Setters
 
-	public int getRow() {
-		return row;
+	public int getIrow() {
+		return irow;
 	}
 
-	public void setRow(int row) {
-		this.row = row;
+	public void setIrow(int irow) {
+		this.irow = irow;
 	}
 
-	public int getColumn() {
-		return column;
+	public int getIcolumn() {
+		return icolumn;
 	}
 
-	public void setColumn(int column) {
-		this.column = column;
+	public void setIcolumn(int icolumn) {
+		this.icolumn = icolumn;
 	}
 	
 	@Override
 	public String toString() {
-		return row + ", " + column;
+		return irow + ", " + icolumn;
 	}
 	
 	
