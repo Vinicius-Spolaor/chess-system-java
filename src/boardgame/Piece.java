@@ -5,17 +5,14 @@ public class Piece {
 	protected Position position;
 	private Board board;
 	
-	//Constructors
+	//Constructor
 	
-	public Piece() {
-	}
-
 	public Piece(Board board) {
 		this.board = board;
 		position = null;
 	}
 	
-	//Getters and Setters
+	//Getter
 	
 	protected Board getBoard() {
 		return board;

@@ -6,10 +6,7 @@ public class Board {
 	private int icolumns;
 	private Piece[][] pieces;
 	
-	//Constructors
-	
-	public Board() {
-	}
+	//Constructor
 
 	public Board(int irows, int icolumns) {
 		this.irows = irows;
@@ -35,6 +32,15 @@ public class Board {
 		this.icolumns = icolumns;
 	}
 	
+	//Methods
+	
+	public Piece piece(int irow, int icolumn) {
+		return pieces[irow][icolumn];
+	}
+	
+	public Piece piece(Position position) {
+		return pieces[position.getIrow()][position.getIcolumn()];
+	}
 	
 	
 	
