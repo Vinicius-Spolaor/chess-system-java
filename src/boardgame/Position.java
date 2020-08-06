@@ -33,11 +33,13 @@ public class Position {
 		this.icolumn = icolumn;
 	}
 	
+	public void setValues(int irow, int icolumn) {
+		this.irow = irow;
+		this.icolumn = icolumn;
+	}
+	
 	@Override
 	public String toString() {
 		return irow + ", " + icolumn;
 	}
-	
-	
-
 }
