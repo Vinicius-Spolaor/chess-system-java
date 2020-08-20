@@ -7,6 +7,7 @@ import boardgame.Position;
 public abstract class ChessPiece extends Piece{
 	
 	private Color color;
+	private int imoveCount;
 
 	//Constructor
 	
@@ -19,6 +20,22 @@ public abstract class ChessPiece extends Piece{
 	
 	public Color getColor() {
 		return color;
+	}
+	
+	public int getImoveCount() {
+		return imoveCount;
+	}
+	
+	public void increaseMoveCount() {
+		imoveCount ++;
+	}
+	
+	public void decreaseMoveCount() {
+		imoveCount --;
+	}
+	
+	public ChessPosition getChessPosition() {
+		return ChessPosition.fromPosition(position);
 	}
 	
 	protected boolean isThereOpponentPiece(Position position) {

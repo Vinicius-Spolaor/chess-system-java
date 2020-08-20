@@ -1,6 +1,8 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import chess.ChessException;
@@ -15,21 +17,51 @@ public class Program {
 		
 		ChessMatch chessMatch = new ChessMatch();
 		
-		while(true) {
+		List<ChessPiece> captured = new ArrayList<>();
+		
+		while(!chessMatch.getBcheckMate()) {
 			try {
 				UI.clearScreen();
 				
-				UI.printBoard(chessMatch.getPieces());
+				UI.printMatch(chessMatch, captured);
 				
 				System.out.println();
 				
 				System.out.print("Origem: ");
 				ChessPosition source = UI.readChessPosition(tec);
 				
+				boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+				UI.clearScreen();
+				UI.printBoard(chessMatch.getPieces(), possibleMoves);
+				
 				System.out.print("Destino: ");
 				ChessPosition target = UI.readChessPosition(tec);
 				
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+				
+				if(capturedPiece != null) {
+					captured.add(capturedPiece);
+				}
+				
+				if(chessMatch.getPromoted() != null) {
+					System.out.print("Digite para qual deseja promover (B/N/R/Q) -> ");
+					String type = tec.nextLine().toUpperCase();
+					
+					while ( !type.equals("B") && !type.equals("N") &&
+							!type.equals("R") && !type.equals("Q") ) {
+						System.out.println();
+						
+						System.out.print("VALOR INVÁLIDO!!\n" +
+										 "Digite para qual deseja promover (B/N/R/Q) -> ");
+						type = tec.nextLine().toUpperCase();	
+							
+					}
+					
+					chessMatch.replacePromotedPiece(type);
+				}
+				
+				UI.clearScreen();
+				UI.printMatch(chessMatch, captured);
 			}
 			catch(ChessException e) {
 				System.out.println(e.getMessage());
